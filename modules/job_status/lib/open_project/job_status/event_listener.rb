@@ -80,7 +80,8 @@ module OpenProject
         # Yiels the block if the job
         # handles statuses
         def for_statused_jobs(job)
-          yield if job.store_status?
+          yield if job.respond_to?(:store_status?) && job.store_status?
+          #yield if job.store_status?
         end
 
         ##
