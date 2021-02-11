@@ -28,11 +28,11 @@
 
 /*jshint expr: true*/
 
-import { ChangeDetectionStrategy, Component, Provider, Type, ViewEncapsulation } from "@angular/core";
-import { Tab } from "core-app/components/wp-single-view-tabs/tab/tab";
-import {HookService} from "core-app/modules/plugins/hook-service";
-import { TabComponent } from "../../components/wp-single-view-tabs/tab/tab.component";
-import { WorkPackageResource } from "../hal/resources/work-package-resource";
+import { Component } from '@angular/core';
+import { Tab } from 'core-app/components/wp-single-view-tabs/tab/tab';
+import {HookService} from 'core-app/modules/plugins/hook-service';
+import { TabComponent } from '../../components/wp-single-view-tabs/tab/tab.component';
+import { WorkPackageResource } from '../hal/resources/work-package-resource';
 
 describe('HookService', function() {
   let service:HookService = new HookService();
@@ -170,9 +170,9 @@ describe('HookService', function() {
       workPackage: WorkPackageResource;
     }
 
-    const tab1 = new Tab(MyTestTabComponent, "GitHub", "github", () => true);
-    const tab2 = new Tab(MyTestTabComponent, "GitLab", "gitlab", () => true);
-    const tab3 = new Tab(MyTestTabComponent, "Bitbucket", "bitbucket", () => true);
+    const tab1 = new Tab(MyTestTabComponent, 'GitHub', 'github', () => true);
+    const tab2 = new Tab(MyTestTabComponent, 'GitLab', 'gitlab', () => true);
+    const tab3 = new Tab(MyTestTabComponent, 'Bitbucket', 'bitbucket', () => true);
 
     expect(service.getWorkPackageTabs()).toEqual([]);
 
