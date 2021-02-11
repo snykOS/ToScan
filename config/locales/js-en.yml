@@ -930,7 +930,6 @@ en:
         relations: Relations
         watchers: Watchers
         attachments: Attachments
-        additional_tabs: Additional Tabs
       time_relative:
         days: "days"
         weeks: "weeks"
