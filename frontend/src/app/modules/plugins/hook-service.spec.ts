@@ -28,7 +28,11 @@
 
 /*jshint expr: true*/
 
+import { ChangeDetectionStrategy, Component, Provider, Type, ViewEncapsulation } from "@angular/core";
+import { Tab } from "core-app/components/wp-single-view-tabs/tab/tab";
 import {HookService} from "core-app/modules/plugins/hook-service";
+import { TabComponent } from "../../components/wp-single-view-tabs/tab/tab.component";
+import { WorkPackageResource } from "../hal/resources/work-package-resource";
 
 describe('HookService', function() {
   let service:HookService = new HookService();
@@ -155,5 +159,30 @@ describe('HookService', function() {
 
       shouldBehaveLikeResultWithElements(validId, 2);
     });
+  });
+
+  describe('registerWorkPackageTab/getWorkPackageTabs', function() {
+    @Component({
+      selector: 'my-tab-component',
+      template: ''
+    })
+    class MyTestTabComponent implements TabComponent {
+      workPackage: WorkPackageResource;
+    }
+
+    const tab1 = new Tab(MyTestTabComponent, "GitHub", "github", () => true);
+    const tab2 = new Tab(MyTestTabComponent, "GitLab", "gitlab", () => true);
+    const tab3 = new Tab(MyTestTabComponent, "Bitbucket", "bitbucket", () => true);
+
+    expect(service.getWorkPackageTabs()).toEqual([]);
+
+    service.registerWorkPackageTab(tab1);
+    expect(service.getWorkPackageTabs()).toEqual([tab1]);
+
+    service.registerWorkPackageTab(tab2);
+    expect(service.getWorkPackageTabs()).toEqual([tab1, tab2]);
+
+    service.registerWorkPackageTab(tab3);
+    expect(service.getWorkPackageTabs()).toEqual([tab1, tab2, tab3]);
   });
 });
