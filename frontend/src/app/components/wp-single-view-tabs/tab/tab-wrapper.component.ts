@@ -42,7 +42,6 @@ import { Tab } from './tab';
 })
 export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit {
   @Input() public workPackageId?:string;
-  @ViewChild('tabContent', { read: ViewContainerRef }) tabContent: ViewContainerRef;
 
   public tab:Tab|undefined;
   public workPackage:WorkPackageResource;
@@ -77,19 +76,5 @@ export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnIn
         this.workPackage = wp;
         this.findTab();
       });
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      if (this.tab === undefined) {
-        // Tab was not found - e.g. because the user typed a random tab-url or does not have view permissions for this tab.
-        return;
-      }
-
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory<TabComponent>(this.tab.component);
-      this.tabContent.clear();
-      const componentRef = this.tabContent.createComponent<TabComponent>(componentFactory);
-      componentRef.instance.workPackage = this.workPackage;
-    }, 0);
   }
 }
