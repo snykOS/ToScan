@@ -33,21 +33,23 @@ import {Injector} from '@angular/core';
 import {States} from 'core-components/states.service';
 import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
 import {NotificationsService} from 'core-app/modules/common/notifications/notifications.service';
-import {HalResourceNotificationService} from "core-app/modules/hal/services/hal-resource-notification.service";
+import {HalResourceNotificationService} from 'core-app/modules/hal/services/hal-resource-notification.service';
 import {SchemaCacheService} from 'core-components/schemas/schema-cache.service';
 import {PathHelperService} from 'core-app/modules/common/path-helper/path-helper.service';
 import {AttachmentCollectionResource} from 'core-app/modules/hal/resources/attachment-collection-resource';
 import {LoadingIndicatorService} from 'core-app/modules/common/loading-indicator/loading-indicator.service';
 import {ConfigurationService} from 'core-app/modules/common/config/configuration.service';
-import {I18nService} from "core-app/modules/common/i18n/i18n.service";
-import {StateService} from "@uirouter/core";
-import {OpenProjectFileUploadService} from "core-components/api/op-file-upload/op-file-upload.service";
-import {OpenProjectDirectFileUploadService} from "core-components/api/op-file-upload/op-direct-file-upload.service";
+import {I18nService} from 'core-app/modules/common/i18n/i18n.service';
+import {StateService} from '@uirouter/core';
+import {OpenProjectFileUploadService} from 'core-components/api/op-file-upload/op-file-upload.service';
+import {OpenProjectDirectFileUploadService} from 'core-components/api/op-file-upload/op-direct-file-upload.service';
 import {WorkPackageCreateService} from 'core-app/components/wp-new/wp-create.service';
-import {WorkPackageNotificationService} from "core-app/modules/work_packages/notifications/work-package-notification.service";
-import {WorkPackagesActivityService} from "core-components/wp-single-view-tabs/activity-panel/wp-activity.service";
-import {TimezoneService} from "core-components/datetime/timezone.service";
-import {APIV3Service} from "core-app/modules/apiv3/api-v3.service";
+import {WorkPackageNotificationService} from 'core-app/modules/work_packages/notifications/work-package-notification.service';
+import {WorkPackagesActivityService} from 'core-components/wp-single-view-tabs/activity-panel/wp-activity.service';
+import {TimezoneService} from 'core-components/datetime/timezone.service';
+import {APIV3Service} from 'core-app/modules/apiv3/api-v3.service';
+import { Tab } from 'core-app/components/wp-single-view-tabs/tab/tab';
+import { TabComponent } from 'core-app/components/wp-single-view-tabs/tab/tab.component';
 
 describe('WorkPackage', () => {
   let halResourceService:HalResourceService;
@@ -153,7 +155,6 @@ describe('WorkPackage', () => {
   describe('when using removeAttachment', () => {
     let file:any;
     let attachment:any;
-    let result:any;
 
     beforeEach(() => {
       file = {};
@@ -215,4 +216,22 @@ describe('WorkPackage', () => {
     });
   });
 
+  describe('.tabs()', () => {
+    beforeEach(createWorkPackage);
+
+    class MyTestTabComponent implements TabComponent {
+      workPackage: WorkPackageResource;
+    }
+
+    const tab1 = new Tab(MyTestTabComponent, 'GitHub', 'github', () => true);
+    const tab2 = new Tab(MyTestTabComponent, 'GitLab', 'gitlab', () => false);
+
+    it('should be empty for an empty list of tabs', () => {
+      expect(workPackage.tabs([])).toEqual([]);
+    });
+
+    it('it returns those tabs that want to be visible', () => {
+      expect(workPackage.tabs([tab1, tab2])).toEqual([tab1]);
+    });
+  });
 });
