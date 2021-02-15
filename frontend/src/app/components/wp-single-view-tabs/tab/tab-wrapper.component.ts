@@ -27,20 +27,19 @@
 // ++
 
 import {Transition} from '@uirouter/core';
-import {AfterViewInit, Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, OnInit} from '@angular/core';
 import {I18nService} from 'core-app/modules/common/i18n/i18n.service';
 import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
 import {HookService} from 'core-app/modules/plugins/hook-service';
 import {UntilDestroyedMixin} from 'core-app/helpers/angular/until-destroyed.mixin';
 import {APIV3Service} from 'core-app/modules/apiv3/api-v3.service';
-import { TabComponent } from './tab.component';
 import { Tab } from './tab';
 
 @Component({
   templateUrl: './tab-wrapper.html',
   selector: 'wp-tab',
 })
-export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit {
+export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public workPackageId?:string;
 
   public tab:Tab|undefined;
