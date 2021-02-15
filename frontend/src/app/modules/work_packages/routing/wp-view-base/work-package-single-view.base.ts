@@ -144,7 +144,10 @@ export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
   }
 
   public tabs():Tab[] {
-    return this.workPackage.tabs(this.hooks.getWorkPackageTabs());
+    return _.filter(
+      this.hooks.getWorkPackageTabs(),
+      (tab) => tab.displayable(this.workPackage)
+    );
   }
 
   /**

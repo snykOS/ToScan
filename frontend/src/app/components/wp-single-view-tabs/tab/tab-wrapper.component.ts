@@ -56,8 +56,11 @@ export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnIn
   findTab() {
     const tabIdentifier = this.$transition.params('to').tabIdentifier;
     const registeredTabs = this.hooks.getWorkPackageTabs();
-    const tabs = this.workPackage.tabs(registeredTabs);
-    this.tab = _.find(tabs, ({identifier: id}) => id === tabIdentifier);
+    const displayableTabs = _.filter(
+      registeredTabs,
+      (tab) => tab.displayable(this.workPackage)
+    );
+    this.tab = _.find(displayableTabs, ({identifier: id}) => id === tabIdentifier);
   }
 
   ngOnInit() {

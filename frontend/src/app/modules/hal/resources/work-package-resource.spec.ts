@@ -215,23 +215,4 @@ describe('WorkPackage', () => {
       });
     });
   });
-
-  describe('.tabs()', () => {
-    beforeEach(createWorkPackage);
-
-    class MyTestTabComponent implements TabComponent {
-      workPackage: WorkPackageResource;
-    }
-
-    const tab1 = new Tab(MyTestTabComponent, 'GitHub', 'github', () => true);
-    const tab2 = new Tab(MyTestTabComponent, 'GitLab', 'gitlab', () => false);
-
-    it('should be empty for an empty list of tabs', () => {
-      expect(workPackage.tabs([])).toEqual([]);
-    });
-
-    it('it returns those tabs that want to be visible', () => {
-      expect(workPackage.tabs([tab1, tab2])).toEqual([tab1]);
-    });
-  });
 });

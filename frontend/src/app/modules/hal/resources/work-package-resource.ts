@@ -183,10 +183,6 @@ export class WorkPackageBaseResource extends HalResource {
     return otherWorkPackage.parent?.$links.self.$link.href === this.$links.self.$link.href;
   }
 
-  public tabs(registeredTabs: Tab[]):Tab[] {
-    return _.filter(registeredTabs, (tab) => tab.displayable(this));
-  }
-
   /**
    * Invalidate a set of linked resources of this work package.
    * And inform the cache service about the work package update.
