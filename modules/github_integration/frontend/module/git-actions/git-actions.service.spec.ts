@@ -54,9 +54,6 @@ describe('GitActionsService', function() {
     TestBed.configureTestingModule({
       providers: [
         GitActionsService
-      ],
-      declarations: [
-        GitActionsService
       ]
     }).compileComponents()
       .then(() => {
