@@ -89,13 +89,7 @@ http://localhost:9876/work_packages/42
     const wp = createWorkPackage({description: { raw: "' && rm -rf / #"}});
     expect(service.gitCommand(wp)).toEqual(`git checkout -b 'user-story/42-find-the-question' && git commit --allow-empty -m '[#42] Find the question
 
-'\'' && rm -rf / #
-
-http://localhost:9876/work_packages/42
-'' to equal 'git checkout -b 'user-story/42-find-the-question' && git commit --allow-empty -m '[#42] Find the question
-
-I recently found the answer is 42. We need to compute the correct
-question.
+'\\'' && rm -rf / #
 
 http://localhost:9876/work_packages/42
 '`);
