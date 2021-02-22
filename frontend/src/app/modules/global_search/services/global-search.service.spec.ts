@@ -55,8 +55,8 @@ describe('Global search service', function() {
     })
     .compileComponents()
     .then(() => {
-      CurrentProject = TestBed.get(CurrentProjectService);
-      service = TestBed.get(GlobalSearchService);
+      CurrentProject = TestBed.inject(CurrentProjectService);
+      service = TestBed.inject(GlobalSearchService);
     });
   }));
 
