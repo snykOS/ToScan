@@ -1,6 +1,7 @@
 import {OpenProjectModule} from 'core-app/angular4-modules';
 import {enableProdMode} from '@angular/core';
 import * as jQuery from "jquery";
+import * as moment from "moment";
 import {environment} from './environments/environment';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {SentryReporter} from "core-app/sentry/sentry-reporter";
@@ -27,8 +28,18 @@ require('core-app/init-vendors');
 require('core-app/init-globals');
 
 const meta = jQuery('meta[name=openproject_initializer]');
-I18n.locale = meta.data('locale') || 'en';
-I18n.firstDayOfWeek = parseInt(meta.data('firstDayOfWeek'), 10);
+const locale = meta.data('locale') || 'en';
+const firstDayOfWeek = parseInt(meta.data('firstDayOfWeek'), 10);
+I18n.locale = locale;
+I18n.firstDayOfWeek = firstDayOfWeek;
+moment.locale(locale, {
+  week: {
+    dow: firstDayOfWeek,
+    // TODO: This is calculated by ISO-8601, however, the US and Canada for example use a different calculation
+    // See also: https://community.openproject.org/projects/openproject/work_packages/35664/activity
+    doy: 7 + firstDayOfWeek - 4,
+  },
+});
 
 if (environment.production) {
   enableProdMode();
