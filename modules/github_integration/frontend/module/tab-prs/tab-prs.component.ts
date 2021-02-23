@@ -48,4 +48,3 @@ export class TabPrsComponent {
     return this.I18n.t('js.github_integration.tab_prs.empty',{ wp_id: this.workPackage.id });
   }
 }
-

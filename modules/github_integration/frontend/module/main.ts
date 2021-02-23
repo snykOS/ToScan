@@ -80,6 +80,3 @@ export class PluginModule {
     initializeGithubIntegrationPlugin(injector);
   }
 }
-
-
-

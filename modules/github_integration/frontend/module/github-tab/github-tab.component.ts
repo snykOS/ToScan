@@ -52,4 +52,3 @@ export class GitHubTabComponent implements OnInit, TabComponent {
     this.pullRequests = [];
   }
 }
-

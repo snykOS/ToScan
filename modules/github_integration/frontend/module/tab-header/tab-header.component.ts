@@ -54,4 +54,3 @@ export class TabHeaderComponent {
               readonly I18n:I18nService) {
   }
 }
-
