@@ -26,8 +26,8 @@
 // See docs/COPYRIGHT.rdoc for more details.
 //++
 
-import {Injectable} from "@angular/core";
-import {Tab} from "core-components/wp-single-view-tabs/tab/tab";
+import {Injectable} from '@angular/core';
+import {Tab} from 'core-components/wp-single-view-tabs/tab/tab';
 
 @Injectable()
 export class HookService {

@@ -1,7 +1,7 @@
-import {Type} from "@angular/core";
-import {Component} from "@angular/core";
+import {Type} from '@angular/core';
+import {Component} from '@angular/core';
 
-import {WorkPackageBaseResource, WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
+import {WorkPackageBaseResource, WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
 
 export interface TabComponent extends Component {
   workPackage:WorkPackageResource;

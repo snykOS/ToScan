@@ -26,18 +26,18 @@
 // See docs/COPYRIGHT.rdoc for more details.
 // ++
 
-import {Transition} from "@uirouter/core";
-import {Component, OnInit} from "@angular/core";
-import {I18nService} from "core-app/modules/common/i18n/i18n.service";
-import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
-import {HookService} from "core-app/modules/plugins/hook-service";
-import {UntilDestroyedMixin} from "core-app/helpers/angular/until-destroyed.mixin";
-import {APIV3Service} from "core-app/modules/apiv3/api-v3.service";
-import {Tab} from "./tab";
+import {Transition} from '@uirouter/core';
+import {Component, OnInit} from '@angular/core';
+import {I18nService} from 'core-app/modules/common/i18n/i18n.service';
+import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
+import {HookService} from 'core-app/modules/plugins/hook-service';
+import {UntilDestroyedMixin} from 'core-app/helpers/angular/until-destroyed.mixin';
+import {APIV3Service} from 'core-app/modules/apiv3/api-v3.service';
+import {Tab} from './tab';
 
 @Component({
-  templateUrl: "./tab-wrapper.html",
-  selector: "wp-tab",
+  templateUrl: './tab-wrapper.html',
+  selector: 'wp-tab',
 })
 export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnInit {
   public tab:Tab|undefined;

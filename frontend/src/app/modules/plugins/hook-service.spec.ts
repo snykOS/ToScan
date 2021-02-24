@@ -28,11 +28,11 @@
 
 /*jshint expr: true*/
 
-import {Component, ChangeDetectionStrategy} from "@angular/core";
-import {Tab} from "core-app/components/wp-single-view-tabs/tab/tab";
-import {HookService} from "core-app/modules/plugins/hook-service";
-import {TabComponent} from "core-components/wp-single-view-tabs/tab/tab";
-import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
+import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Tab} from 'core-app/components/wp-single-view-tabs/tab/tab';
+import {HookService} from 'core-app/modules/plugins/hook-service';
+import {TabComponent} from 'core-components/wp-single-view-tabs/tab/tab';
+import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
 
 describe('HookService', function() {
   let service:HookService = new HookService();
