@@ -48,8 +48,6 @@ import {WorkPackageNotificationService} from 'core-app/modules/work_packages/not
 import {WorkPackagesActivityService} from 'core-components/wp-single-view-tabs/activity-panel/wp-activity.service';
 import {TimezoneService} from 'core-components/datetime/timezone.service';
 import {APIV3Service} from 'core-app/modules/apiv3/api-v3.service';
-import { Tab } from 'core-app/components/wp-single-view-tabs/tab/tab';
-import { TabComponent } from 'core-app/components/wp-single-view-tabs/tab/tab.component';
 
 describe('WorkPackage', () => {
   let halResourceService:HalResourceService;

@@ -28,10 +28,10 @@
 
 /*jshint expr: true*/
 
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {Tab} from "core-app/components/wp-single-view-tabs/tab/tab";
 import {HookService} from "core-app/modules/plugins/hook-service";
-import {TabComponent} from "core-components/wp-single-view-tabs/tab/typings"; // can we get rid of this?
+import {TabComponent} from "core-components/wp-single-view-tabs/tab/tab";
 import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
 
 describe('HookService', function() {
@@ -164,7 +164,8 @@ describe('HookService', function() {
   describe('registerWorkPackageTab/getWorkPackageTabs', function() {
     @Component({
       selector: 'my-tab-component',
-      template: ''
+      template: '',
+      changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class MyTestTabComponent implements TabComponent {
       workPackage: WorkPackageResource;
