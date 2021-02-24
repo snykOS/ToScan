@@ -51,7 +51,7 @@ export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnIn
   }
 
   findTab() {
-    const tabIdentifier = this.$transition.params("to").tabIdentifier;
+    const tabIdentifier = this.$transition.params('to').tabIdentifier;
     const registeredTabs = this.hooks.getWorkPackageTabs();
     const displayableTabs = _.filter(
       registeredTabs,
@@ -61,7 +61,7 @@ export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnIn
   }
 
   workPackageId() {
-    return(this.$transition.params("to").workPackageId);
+    return(this.$transition.params('to').workPackageId);
   }
 
   ngOnInit() {
