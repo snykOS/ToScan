@@ -34,7 +34,7 @@ import {WorkPackageNewSplitViewComponent} from 'core-components/wp-new/wp-new-sp
 import {Ng2StateDeclaration} from "@uirouter/angular";
 import {ComponentType} from "@angular/cdk/overlay";
 import {WorkPackageCopySplitViewComponent} from "core-components/wp-copy/wp-copy-split-view.component";
-import { WorkPackageTabComponent } from 'core-app/components/wp-single-view-tabs/tab/tab-wrapper.component';
+import {WorkPackageTabComponent} from "core-app/components/wp-single-view-tabs/tab/tab-wrapper.component";
 
 /**
  * Return a set of routes for a split view mounted under the given base route,

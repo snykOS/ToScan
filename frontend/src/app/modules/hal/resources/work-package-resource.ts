@@ -32,10 +32,7 @@ import {AttachmentCollectionResource} from 'core-app/modules/hal/resources/attac
 import {CollectionResource} from 'core-app/modules/hal/resources/collection-resource';
 import {TypeResource} from 'core-app/modules/hal/resources/type-resource';
 import {RelationResource} from 'core-app/modules/hal/resources/relation-resource';
-import {
-  OpenProjectFileUploadService,
-  UploadFile
-} from 'core-components/api/op-file-upload/op-file-upload.service';
+import {OpenProjectFileUploadService} from 'core-components/api/op-file-upload/op-file-upload.service';
 import {States} from 'core-components/states.service';
 import {PathHelperService} from 'core-app/modules/common/path-helper/path-helper.service';
 import {NotificationsService} from 'core-app/modules/common/notifications/notifications.service';
@@ -46,7 +43,6 @@ import {WorkPackagesActivityService} from "core-components/wp-single-view-tabs/a
 import {WorkPackageNotificationService} from "core-app/modules/work_packages/notifications/work-package-notification.service";
 import {InjectField} from "core-app/helpers/angular/inject-field.decorator";
 import {APIV3Service} from "core-app/modules/apiv3/api-v3.service";
-import { Tab } from 'core-app/components/wp-single-view-tabs/tab/tab';
 
 export interface WorkPackageResourceEmbedded {
   activities:CollectionResource;

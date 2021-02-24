@@ -1,11 +1,6 @@
-<div class="detail-panel-description detail-panel--integration detail-panel--autocomplete-target"
-     *ngIf="workPackage">
-  <div class="detail-panel-description-content">
-    <ndc-dynamic
-      *ngIf="tab"
-      [ndcDynamicComponent]="tab.component"
-      [ndcDynamicInputs]="{ workPackage: workPackage, tab: tab }"
-      >
-    </ndc-dynamic>
-  </div>
-</div>
+<ndc-dynamic
+  *ngIf="workPackage && tab"
+  [ndcDynamicComponent]="tab.component"
+  [ndcDynamicInputs]="{ workPackage: workPackage, tab: tab }"
+  >
+</ndc-dynamic>

@@ -28,7 +28,7 @@
 
 import {WorkPackageActivityTabComponent} from 'core-components/wp-single-view-tabs/activity-panel/activity-tab.component';
 import {WorkPackageRelationsTabComponent} from 'core-components/wp-single-view-tabs/relations-tab/relations-tab.component';
-import {WorkPackageTabComponent} from 'core-app/components/wp-single-view-tabs/tab/tab-wrapper.component';
+import {WorkPackageTabComponent} from "core-app/components/wp-single-view-tabs/tab/tab-wrapper.component";
 import {WorkPackageWatchersTabComponent} from 'core-components/wp-single-view-tabs/watchers-tab/watchers-tab.component';
 import {WorkPackageNewFullViewComponent} from 'core-components/wp-new/wp-new-full-view.component';
 import {WorkPackageCopyFullViewComponent} from 'core-components/wp-copy/wp-copy-full-view.component';

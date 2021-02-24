@@ -26,55 +26,54 @@
 // See docs/COPYRIGHT.rdoc for more details.
 // ++
 
-import {Transition} from '@uirouter/core';
-import {Component, ComponentFactoryResolver, Input, OnInit} from '@angular/core';
-import {I18nService} from 'core-app/modules/common/i18n/i18n.service';
-import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
-import {HookService} from 'core-app/modules/plugins/hook-service';
-import {UntilDestroyedMixin} from 'core-app/helpers/angular/until-destroyed.mixin';
-import {APIV3Service} from 'core-app/modules/apiv3/api-v3.service';
-import { Tab } from './tab';
+import {Transition} from "@uirouter/core";
+import {Component, OnInit} from "@angular/core";
+import {I18nService} from "core-app/modules/common/i18n/i18n.service";
+import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
+import {HookService} from "core-app/modules/plugins/hook-service";
+import {UntilDestroyedMixin} from "core-app/helpers/angular/until-destroyed.mixin";
+import {APIV3Service} from "core-app/modules/apiv3/api-v3.service";
+import {Tab} from "./tab";
 
 @Component({
-  templateUrl: './tab-wrapper.html',
-  selector: 'wp-tab',
+  templateUrl: "./tab-wrapper.html",
+  selector: "wp-tab",
 })
 export class WorkPackageTabComponent extends UntilDestroyedMixin implements OnInit {
-  @Input() public workPackageId?:string;
-
   public tab:Tab|undefined;
   public workPackage:WorkPackageResource;
 
   public constructor(readonly I18n:I18nService,
                      readonly $transition:Transition,
                      readonly apiV3Service:APIV3Service,
-                     readonly hooks:HookService,
-                     private componentFactoryResolver: ComponentFactoryResolver) {
+                     readonly hooks:HookService,) {
     super();
   }
 
   findTab() {
-    const tabIdentifier = this.$transition.params('to').tabIdentifier;
+    const tabIdentifier = this.$transition.params("to").tabIdentifier;
     const registeredTabs = this.hooks.getWorkPackageTabs();
     const displayableTabs = _.filter(
       registeredTabs,
       (tab) => tab.displayable(this.workPackage)
     );
-    this.tab = _.find(displayableTabs, ({identifier: id}) => id === tabIdentifier);
+    this.tab = displayableTabs.find(({identifier: id}) => id === tabIdentifier);
+  }
+
+  workPackageId() {
+    return(this.$transition.params("to").workPackageId);
   }
 
   ngOnInit() {
-    const wpId = this.workPackageId || this.$transition.params('to').workPackageId;
     this
       .apiV3Service
       .work_packages
-      .id(wpId)
+      .id(this.workPackageId())
       .requireAndStream()
       .pipe(
         this.untilDestroyed()
       )
       .subscribe((wp) => {
-        this.workPackageId = wp.id!;
         this.workPackage = wp;
         this.findTab();
       });

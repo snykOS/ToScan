@@ -28,11 +28,11 @@
 
 /*jshint expr: true*/
 
-import { Component } from '@angular/core';
-import { Tab } from 'core-app/components/wp-single-view-tabs/tab/tab';
-import {HookService} from 'core-app/modules/plugins/hook-service';
-import { TabComponent } from '../../components/wp-single-view-tabs/tab/tab.component';
-import { WorkPackageResource } from '../hal/resources/work-package-resource';
+import {Component} from "@angular/core";
+import {Tab} from "core-app/components/wp-single-view-tabs/tab/tab";
+import {HookService} from "core-app/modules/plugins/hook-service";
+import {TabComponent} from "core-components/wp-single-view-tabs/tab/typings"; // can we get rid of this?
+import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
 
 describe('HookService', function() {
   let service:HookService = new HookService();
@@ -174,7 +174,7 @@ describe('HookService', function() {
     const tab2 = new Tab(MyTestTabComponent, 'GitLab', 'gitlab', () => true);
     const tab3 = new Tab(MyTestTabComponent, 'Bitbucket', 'bitbucket', () => true);
 
-    it('returns empty results', function() {
+    it('returns all registered tabs', function() {
       expect(service.getWorkPackageTabs()).toEqual([]);
 
       service.registerWorkPackageTab(tab1);
