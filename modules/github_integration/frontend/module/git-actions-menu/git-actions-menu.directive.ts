@@ -27,16 +27,11 @@
 //++
 
 import {OpContextMenuItem} from 'core-components/op-context-menu/op-context-menu.types';
-import {StateService} from '@uirouter/core';
-import {OPContextMenuService} from "core-components/op-context-menu/op-context-menu.service";
-import {Directive, ElementRef, Input, OnInit} from "@angular/core";
-import {LinkHandling} from "core-app/modules/common/link-handling/link-handling";
-import {OpContextMenuTrigger} from "core-components/op-context-menu/handlers/op-context-menu-trigger.directive";
-import {Highlighting} from 'core-app/components/wp-fast-table/builders/highlighting/highlighting.functions';
-import {BrowserDetector} from "core-app/modules/common/browser/browser-detector.service";
-import { WorkPackageResource } from 'core-app/modules/hal/resources/work-package-resource';
-import {I18nService} from "core-app/modules/common/i18n/i18n.service";
-import { GitActionsMenuComponent } from './git-actions-menu.component';
+import {OPContextMenuService} from 'core-components/op-context-menu/op-context-menu.service';
+import {Directive, ElementRef, Input} from '@angular/core';
+import {OpContextMenuTrigger} from 'core-components/op-context-menu/handlers/op-context-menu-trigger.directive';
+import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
+import {GitActionsMenuComponent} from './git-actions-menu.component';
 
 @Directive({
   selector: '[gitActionsCopyDropdown]'
@@ -45,10 +40,7 @@ export class GitActionsMenuDirective extends OpContextMenuTrigger {
   @Input('gitActionsCopyDropdown-workPackage') public workPackage:WorkPackageResource;
 
   constructor(readonly elementRef:ElementRef,
-              readonly opContextMenu:OPContextMenuService,
-              readonly browserDetector:BrowserDetector,
-              readonly $state:StateService,
-              readonly I18n:I18nService) {
+              readonly opContextMenu:OPContextMenuService) {
     super(elementRef, opContextMenu);
   }
 

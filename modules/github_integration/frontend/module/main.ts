@@ -26,16 +26,16 @@
 
 import {Injector, NgModule} from '@angular/core';
 
-import { HookService } from '../../hook-service';
-import {Tab} from "../../../../components/wp-single-view-tabs/tab/tab";
-import {WorkPackageResource} from "../../../hal/resources/work-package-resource";
-import {OpenprojectCommonModule} from "core-app/modules/common/openproject-common.module";
+import {HookService} from 'core-app/modules/plugins/hook-service';
+import {Tab} from 'core-components/wp-single-view-tabs/tab/tab';
+import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
+import {OpenprojectCommonModule} from 'core-app/modules/common/openproject-common.module';
 
 import {GitHubTabComponent} from './github-tab/github-tab.component';
 import {TabHeaderComponent} from './tab-header/tab-header.component';
 import {TabPrsComponent} from './tab-prs/tab-prs.component';
-import { GitActionsMenuDirective } from './git-actions-menu/git-actions-menu.directive';
-import { GitActionsMenuComponent } from './git-actions-menu/git-actions-menu.component';
+import {GitActionsMenuDirective} from './git-actions-menu/git-actions-menu.directive';
+import {GitActionsMenuComponent} from './git-actions-menu/git-actions-menu.component';
 
 function displayable(work_package: WorkPackageResource): boolean {
   return(!!work_package.github);
@@ -47,7 +47,7 @@ export function initializeGithubIntegrationPlugin(injector:Injector) {
     new Tab(
       GitHubTabComponent,
       I18n.t('js.github_integration.work_packages.tab_name'),
-      "github",
+      'github',
       displayable
     )
   );

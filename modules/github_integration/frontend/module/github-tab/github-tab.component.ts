@@ -26,12 +26,11 @@
 // See docs/COPYRIGHT.rdoc for more details.
 //++
 
-import {Component, Input, OnInit} from "@angular/core";
-import {WorkPackageResource} from "core-app/modules/hal/resources/work-package-resource";
-import {PathHelperService} from "core-app/modules/common/path-helper/path-helper.service";
-import {I18nService} from "core-app/modules/common/i18n/i18n.service";
-import {TabComponent} from 'core-components/wp-single-view-tabs/tab/tab.component';
-
+import {Component, Input, OnInit} from '@angular/core';
+import {WorkPackageResource} from 'core-app/modules/hal/resources/work-package-resource';
+import {PathHelperService} from 'core-app/modules/common/path-helper/path-helper.service';
+import {I18nService} from 'core-app/modules/common/i18n/i18n.service';
+import {TabComponent} from 'core-components/wp-single-view-tabs/tab/tab';
 
 @Component({
   selector: 'github-tab',
@@ -45,7 +44,6 @@ export class GitHubTabComponent implements OnInit, TabComponent {
   constructor(readonly PathHelper:PathHelperService,
               readonly I18n:I18nService) {
   }
-
 
   ngOnInit() {
     // TODO fetch real PRs
