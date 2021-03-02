@@ -26,7 +26,8 @@
 // See docs/COPYRIGHT.rdoc for more details.
 //++
 
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
+import {Tab} from 'core-components/wp-single-view-tabs/tab/tab';
 
 @Injectable()
 export class HookService {
@@ -58,5 +59,13 @@ export class HookService {
     }
 
     return results;
+  }
+
+  public registerWorkPackageTab(tab:Tab) {
+    this.register('workPackageTabs', () => tab);
+  }
+
+  public getWorkPackageTabs():Tab[] {
+    return(this.call('workPackageTabs'));
   }
 }

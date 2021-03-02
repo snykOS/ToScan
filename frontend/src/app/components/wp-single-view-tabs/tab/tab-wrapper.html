@@ -1,0 +1,6 @@
+<ndc-dynamic
+  *ngIf="workPackage && tab"
+  [ndcDynamicComponent]="tab.component"
+  [ndcDynamicInputs]="{ workPackage: workPackage, tab: tab }"
+  >
+</ndc-dynamic>
