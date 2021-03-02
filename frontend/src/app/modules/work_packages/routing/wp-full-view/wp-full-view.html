@@ -74,11 +74,8 @@
                 <a href="" [textContent]="text.tabs.watchers"></a>
                 <wp-watchers-count [wpId]="workPackage.id"></wp-watchers-count>
               </li>
-              <li *ngFor="let tab of tabs()" uiSref="work-packages.show.tabs"
-                  [uiParams]="{workPackageId: workPackage.id, tabIdentifier: tab.identifier}"
-                  uiSrefActive="selected">
-                <a href="" [textContent]="tab.displayName"></a>
-              </li>
+
+              <op-wp-tabs [workPackage]="workPackage"></op-wp-tabs>
             </ul>
           </div>
           <div class="tabcontent" ui-view>

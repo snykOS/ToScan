@@ -75,7 +75,6 @@ import {WorkPackageSplitViewToolbarComponent} from 'core-components/wp-details/w
 import {WorkPackageWatcherButtonComponent} from 'core-components/work-packages/wp-watcher-button/wp-watcher-button.component';
 import {WorkPackageSubjectComponent} from 'core-components/work-packages/wp-subject/wp-subject.component';
 import {WorkPackageRelationsTabComponent} from 'core-components/wp-single-view-tabs/relations-tab/relations-tab.component';
-import {WorkPackageTabComponent} from 'core-app/components/wp-single-view-tabs/tab/tab-wrapper.component';
 import {WorkPackageRelationsComponent} from 'core-components/wp-relations/wp-relations.component';
 import {WorkPackageRelationsGroupComponent} from 'core-components/wp-relations/wp-relations-group/wp-relations-group.component';
 import {WorkPackageRelationRowComponent} from 'core-components/wp-relations/wp-relation-row/wp-relation-row.component';
@@ -169,6 +168,7 @@ import {BackButtonComponent} from "core-app/modules/common/back-routing/back-but
 import {DatePickerModal} from "core-components/datepicker/datepicker.modal";
 import {WorkPackagesTableComponent} from "core-components/wp-table/wp-table.component";
 import {WorkPackageGroupToggleDropdownMenuDirective} from "core-components/op-context-menu/handlers/wp-group-toggle-dropdown-menu.directive";
+import {OpWpTabsModule} from "core-components/wp-tabs/wp-tabs.module";
 
 @NgModule({
   imports: [
@@ -184,6 +184,8 @@ import {WorkPackageGroupToggleDropdownMenuDirective} from "core-components/op-co
     OpenprojectBcfModule,
 
     OpenprojectProjectsModule,
+
+    OpWpTabsModule,
   ],
   providers: [
     // Notification service
@@ -321,7 +323,7 @@ import {WorkPackageGroupToggleDropdownMenuDirective} from "core-components/op-co
     ActivityLinkComponent,
     WorkPackageActivityTabComponent,
 
-    // Watchers tab
+    // Watchers wp-tab-wrapper
     WorkPackageWatchersTabComponent,
     WorkPackageWatcherEntryComponent,
 
@@ -334,9 +336,6 @@ import {WorkPackageGroupToggleDropdownMenuDirective} from "core-components/op-co
     WorkPackageRelationsHierarchyComponent,
     WorkPackageRelationsAutocomplete,
     WorkPackageBreadcrumbParentComponent,
-
-    // Additional tabs
-    WorkPackageTabComponent,
 
     // Split view
     WorkPackageDetailsViewButtonComponent,
