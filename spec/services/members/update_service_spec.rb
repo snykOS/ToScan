@@ -1,3 +1,5 @@
+#-- encoding: UTF-8
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2021 the OpenProject GmbH
@@ -26,32 +28,47 @@
 # See docs/COPYRIGHT.rdoc for more details.
 #++
 
-module OpenProject
-  ##
-  # Events defined in OpenProject, e.g. created work packages.
-  # The module defines a constant for each event.
-  #
-  # Plugins should register their events here too by prepending a module
-  # including the respective constants.
-  #
-  # @note Does not include all events but it should!
-  # @see OpenProject::Notifications
-  module Events
-    AGGREGATED_WORK_PACKAGE_JOURNAL_READY = "aggregated_work_package_journal_ready".freeze
-    AGGREGATED_WIKI_JOURNAL_READY = "aggregated_wiki_journal_ready".freeze
+require 'spec_helper'
+require 'services/base_services/behaves_like_update_service'
 
-    JOURNAL_CREATED = 'journal_created'.freeze
+describe Members::UpdateService, type: :model do
+  it_behaves_like 'BaseServices update service' do
+    let!(:allow_notification_call) do
+      allow(OpenProject::Notifications)
+        .to receive(:send)
+    end
 
-    MEMBER_CREATED = 'member_created'.freeze
-    MEMBER_UPDATED = 'member_updated'.freeze
+    describe 'if successful' do
+      it 'sends a notification' do
+        expect(OpenProject::Notifications)
+          .to receive(:send)
+          .with(OpenProject::Events::MEMBER_UPDATED,
+                member: model_instance)
 
-    TIME_ENTRY_CREATED = "time_entry_created".freeze
+        subject
+      end
+    end
 
-    PROJECT_CREATED = "project_created".freeze
-    PROJECT_UPDATED = "project_updated".freeze
-    PROJECT_RENAMED = "project_renamed".freeze
+    context 'if the SetAttributeService is unsuccessful' do
+      let(:set_attributes_success) { false }
 
-    WATCHER_ADDED = 'watcher_added'.freeze
-    WATCHER_REMOVED = 'watcher_removed'.freeze
+      it 'sends no notification' do
+        expect(OpenProject::Notifications)
+          .not_to receive(:send)
+
+        subject
+      end
+    end
+
+    context 'when the member is invalid' do
+      let(:model_save_result) { false }
+
+      it 'sends no notification' do
+        expect(OpenProject::Notifications)
+          .not_to receive(:send)
+
+        subject
+      end
+    end
   end
 end

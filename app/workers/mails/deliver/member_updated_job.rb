@@ -1,3 +1,4 @@
+#-- encoding: UTF-8
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2021 the OpenProject GmbH
@@ -26,32 +27,27 @@
 # See docs/COPYRIGHT.rdoc for more details.
 #++
 
-module OpenProject
-  ##
-  # Events defined in OpenProject, e.g. created work packages.
-  # The module defines a constant for each event.
-  #
-  # Plugins should register their events here too by prepending a module
-  # including the respective constants.
-  #
-  # @note Does not include all events but it should!
-  # @see OpenProject::Notifications
-  module Events
-    AGGREGATED_WORK_PACKAGE_JOURNAL_READY = "aggregated_work_package_journal_ready".freeze
-    AGGREGATED_WIKI_JOURNAL_READY = "aggregated_wiki_journal_ready".freeze
-
-    JOURNAL_CREATED = 'journal_created'.freeze
-
-    MEMBER_CREATED = 'member_created'.freeze
-    MEMBER_UPDATED = 'member_updated'.freeze
-
-    TIME_ENTRY_CREATED = "time_entry_created".freeze
-
-    PROJECT_CREATED = "project_created".freeze
-    PROJECT_UPDATED = "project_updated".freeze
-    PROJECT_RENAMED = "project_renamed".freeze
-
-    WATCHER_ADDED = 'watcher_added'.freeze
-    WATCHER_REMOVED = 'watcher_removed'.freeze
+class Mails::Deliver::MemberUpdatedJob < ApplicationJob
+  def perform(current_user:,
+              member:)
+    if member.project.nil?
+      MemberMailer
+        .updated_global(current_user, member)
+        .deliver_now
+    elsif member.principal.is_a?(Group)
+      Member
+        .where(project: member.project,
+               principal: member.principal.users)
+        .includes(:project, :principal, :roles)
+        .each do |users_member|
+        MemberMailer
+          .added_project(current_user, users_member)
+          .deliver_now
+      end
+    elsif member.principal.is_a?(User)
+      MemberMailer
+        .updated_project(current_user, member)
+        .deliver_now
+    end
   end
 end
