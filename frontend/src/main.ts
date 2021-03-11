@@ -30,16 +30,18 @@ require('core-app/init-globals');
 const meta = jQuery('meta[name=openproject_initializer]');
 const locale = meta.data('locale') || 'en';
 const firstDayOfWeek = parseInt(meta.data('firstDayOfWeek'), 10);
+const firstWeekOfYear = parseInt(meta.data('firstWeekOfYear'), 10);
 I18n.locale = locale;
 I18n.firstDayOfWeek = firstDayOfWeek;
-moment.locale(locale, {
-  week: {
-    dow: firstDayOfWeek,
-    // TODO: This is calculated by ISO-8601, however, the US and Canada for example use a different calculation
-    // See also: https://community.openproject.org/projects/openproject/work_packages/35664/activity
-    doy: 7 + firstDayOfWeek - 4,
-  },
-});
+
+if (typeof firstDayOfWeek === 'number' && typeof firstWeekOfYear === 'number') {
+  moment.updateLocale(locale, {
+    week: {
+      dow: firstDayOfWeek,
+      doy: 7 + firstDayOfWeek - firstWeekOfYear
+    }
+  });
+}
 
 if (environment.production) {
   enableProdMode();

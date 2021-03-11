@@ -20,7 +20,6 @@ export interface GlobalI18n {
 
   locale:string;
   firstDayOfWeek:number;
-
 }
 
 interface ToNumberOptions {
