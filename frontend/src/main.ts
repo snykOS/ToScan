@@ -34,7 +34,7 @@ const firstWeekOfYear = parseInt(meta.data('firstWeekOfYear'), 10);
 I18n.locale = locale;
 I18n.firstDayOfWeek = firstDayOfWeek;
 
-if (typeof firstDayOfWeek === 'number' && typeof firstWeekOfYear === 'number') {
+if (!isNaN(firstDayOfWeek) && !isNaN(firstWeekOfYear)) {
   moment.updateLocale(locale, {
     week: {
       dow: firstDayOfWeek,
