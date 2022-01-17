@@ -1,9 +1,9 @@
-FROM ruby:2.7.1-buster AS pgloader
+FROM ruby:2-buster AS pgloader
 RUN apt-get update -qq && apt-get install -y libsqlite3-dev make curl gawk freetds-dev libzip-dev
 COPY docker/mysql-to-postgres/bin/build /tmp/build-pgloader
 RUN /tmp/build-pgloader && rm /tmp/build-pgloader
 
-FROM ruby:2.7.1-buster
+FROM ruby:2-buster
 MAINTAINER operations@openproject.com
 
 # Allow platform-specific additions. Valid values are: on-prem,saas,bahn
