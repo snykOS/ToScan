@@ -1,0 +1,369 @@
+@font-face { 
+  font-family: Yanone Kaffeesatz; 
+    src: url('../fonts/YanoneKaffeesatz-Regular.eot'); 
+    src: local("Yanone Kaffeesatz"), url('../fonts/YanoneKaffeesatz-Regular.ttf'); 
+} 
+
+html { 
+  height: 100%;
+}
+
+* { 
+  margin: 0;
+  padding: 0;
+}
+
+/* tell the browser to render HTML 5 elements as block */
+article, aside, figure, footer, header, hgroup, nav, section { 
+  display:block;
+}
+
+p {  
+  padding: 0 0 20px 0;
+  line-height: 1.7em;
+}
+
+img {  
+  border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {  
+  color: #362C20;
+  letter-spacing: 0em;
+  padding: 0 0 5px 0;
+}
+
+h1, h2, h4 {  
+  font: normal 200% arial, sans-serif;
+  text-shadow: 1px 1px #FFF;
+  margin: 0 0 15px 0;
+  padding: 15px 20px 5px 0;
+  color: #555;
+}
+
+h2 {  
+  font: normal 150% arial, sans-serif;
+}
+
+h4 {  
+  font: normal 150% "Yanone Kaffeesatz", arial, sans-serif;
+  padding: 5px 20px 5px 0;
+  margin: 0;
+  color: #555;
+}
+
+h3 {  
+  color: #0FCFEB;
+  padding: 10px 0 5px 0;
+  font: normal 170% arial;
+}
+
+h5 {  
+  color: #888;
+  font: italic 95% arial;
+  letter-spacing: normal;
+  padding: 0 0 15px 0;
+}
+
+h6 {  
+  padding: 5px 0 25px 0;
+}
+
+a, a:hover {  
+  outline: none;
+  text-decoration: underline;
+  color: #A4AA04;
+}
+
+a:hover {  
+  text-decoration: none;
+}
+
+blockquote {  
+  margin: 20px 0; 
+  padding: 10px 20px 0 20px;
+  border: 1px solid #E5E5DB;
+  background: #FFF;
+}
+
+ul {  
+  margin: 2px 0 22px 17px;
+}
+
+ul li {  
+  list-style-type: circle;
+  margin: 0 0 6px 0; 
+  padding: 0 0 4px 5px;
+  line-height: 1.5em;
+}
+
+ol {  
+  margin: 8px 0 22px 20px;
+}
+
+ol li {  
+  margin: 0 0 11px 0;
+}
+
+.left { 
+  float: left;
+  width: auto;
+  margin-right: 10px;
+}
+
+.right { 
+  float: right; 
+  width: auto;
+  margin-left: 10px;
+}
+
+.center { 
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+}
+
+#main, #logo, nav, #site_content, footer {  
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+header {  
+  background: #202020 url(../images/back.png) repeat-x;
+  height: 165px;
+}
+
+#logo {  
+  width: 875px;
+  position: relative;
+  height: 120px;
+  background: url(../logo_png.png) no-repeat bottom right;
+}
+
+#logo h1, #logo h2 { 
+  font: normal 220% arial, sans-serif;
+  border-bottom: 0;
+  text-transform: none;
+  text-shadow: none;
+  margin: 0;
+}
+
+#logo h2 { 
+  font: normal 140% 'Yanone Kaffeesatz', arial, sans-serif;
+}
+
+#logo_text h1, #logo_text h1 a, #logo_text h1 a:hover { 
+  padding: 25px 0 0 0;
+  color: #FFF;
+  text-decoration: none;
+}
+
+#logo_text h1 a .logo_colour { 
+  color: #09D4FF;
+  text-shadow: 0;
+}
+
+#logo_text a:hover .logo_colour { 
+  color: #FFF;
+}
+
+#logo_text h2 { 
+  padding: 0 0 0 0;
+  color: #A8AA94;
+}
+
+nav {  
+  width: 935px;
+  height: 44px;
+  padding: 0 0 0 4px;
+} 
+
+#site_content {  
+  width: 885px;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  padding: 0 0 20px 0;
+} 
+
+
+#content {  
+  text-align: left;
+  width: 600px;
+  padding: 0 0 0 5px;
+  float: left;
+}
+
+
+footer {  
+  width: 100%;
+  font-family: 'trebuchet ms', sans-serif;
+  font-size: 100%;
+  height: 80px;
+  padding: 25px 0 5px 0;
+  text-align: center; 
+  background: #333;
+  color: #A8AA94;
+}
+
+footer p {  
+  line-height: 1.5em;
+  padding: 0 0 10px 0;
+}
+
+footer a {  
+  color: #A8AA94;
+  text-decoration: none;
+}
+
+footer a:hover {  
+  color: #FFF;
+  text-decoration: none;
+}
+
+.form_settings { 
+  margin: 15px 0 0 0;
+}
+
+.form_settings p { 
+  padding: 0 0 4px 0;
+}
+
+.form_settings span { 
+  float: left; 
+  width: 200px; 
+  text-align: left;
+}
+
+.form_settings span.field_group { 
+  padding-left: 10px;
+  width: 280px; 
+}
+
+.form_settings fieldset{
+	
+  padding: 5px;
+  width: 299px; 
+  margin-left: 200px ;
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #47433F;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+
+.form_settings fieldset[disabled='disabled']{
+	
+  background: #F9F9F9; 
+  color: #a0a0a0 ;
+}
+
+.form_settings input[type='file'] { 
+	
+	vertical-align: middle;
+}
+
+.form_settings input, .form_settings textarea { 
+  padding: 5px; 
+  width: 299px; 
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #47433F;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+  
+.form_settings .submit { 
+  font: 100% arial; 
+  border: 0; 
+  width: 99px; 
+  margin: 0 0 0 212px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #3B3B3B; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+
+.form_settings textarea, .form_settings select { 
+  font: 100% arial; 
+  width: 299px;
+}
+
+.form_settings select { 
+  width: 310px;
+}
+.form_settings .radio { 
+  margin: 4px 0; 
+  padding: 0; 
+  width: 20px;
+  border: 0;
+  background: none;
+  float : left ;
+}
+
+.form_settings .checkbox { 
+  margin: 4px 0; 
+  padding: 0; 
+  width: 20px;
+  border: 0;
+  background: none;
+  
+}
+
+.separator { 
+  width: 100%;
+  height: 0;
+  border-top: 1px solid #D9D5CF;
+  border-bottom: 1px solid #FFF;
+  margin: 0 0 20px 0;
+}
+  
+table { 
+  margin: 10px 0 30px 0;
+}
+
+table tr th, table tr td { 
+  background: #3B3B3B;
+  color: #FFF;
+  padding: 7px 4px;
+  text-align: left;
+}
+  
+table tr td { 
+  background: #E5E5DB;
+  color: #47433F;
+  border-top: 1px solid #FFF;
+}
+
+
+
+/* scroll to top */
+#scroll { 
+  position: relative; 
+  width: 900px;
+  margin: 10px auto;
+  bottom: 15px; 
+  right: 0;
+  background: red;
+  padding: 0;
+}
+  
+#scroll a { 
+  float: right;
+  margin: 0 0 0 0; 
+  padding: 0 0 0 0;
+}
+  
+#scroll a img { 
+  float: right;
+  padding: 0 0 0 0;
+  margin: 0;
+}
+
